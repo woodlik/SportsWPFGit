@@ -1,0 +1,169 @@
+﻿<Page x:Class="Sports.Forms.Trainers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sports"
+        mc:Ignorable="d"
+        Title="Тренера" Loaded="Page_LoadedTrainers">
+
+    <StackPanel 
+        Name="Stack2"  
+        Background="Wheat">
+        <Menu Height="30" 
+              Background="Wheat">
+            <MenuItem Header="Документ" Height="30">
+                <MenuItem Header="Добавить нового тренера" Click="clNewTrainer" Width="270"/>
+                <MenuItem Header="Обновить таблицу" Click="clRefreshTrainer" Width="270"/>
+                <MenuItem Header="Редактировать записи" Click="clEditTrainer" Width="270"/>
+                <MenuItem Header="Сохранить изменения" Click="clSaveTrainer" Width="270"/>
+                <MenuItem Header="Удалить тренера" Click="clDeleteTrainer" Width="270"/>
+                <Separator></Separator>
+                <MenuItem Header="Завершение работы " Click="clExit" Width="270"/>
+            </MenuItem>
+        </Menu>
+
+
+        <ToolBar 
+            Name="ToolBar1" 
+            Margin="3" 
+            Height="45">
+
+            <Button 
+                Name="Refresh"   
+                Margin="5,2,5,2"   
+                ToolTip="Обновить"
+                Click="clRefreshTrainer">
+                <Image Source="D:\C# лабы\Sports\Sports\Image/refresh_48.png" />
+            </Button>
+
+            <Button 
+                Name="Add" 
+                ToolTip="Добавить нового тренера" 
+                Margin="5,2,5,2" 
+                Click="clNewTrainer" >
+                <Image Source="D:\C# лабы\Sports\Sports\Image/add_48.png" />
+            </Button>
+
+            <Button 
+                Name="Edit" 
+                ToolTip="Редактировать" 
+                Margin="5,2,5,2"
+                Click="clEditTrainer">
+                <Image Source="D:\C# лабы\Sports\Sports\Image/paper_content_pencil_48.png" />
+            </Button>
+
+            <Button 
+                Name="Save" 
+                ToolTip="Сохранить" 
+                Margin="5,2,5,2"
+                Click="clSaveTrainer">
+                <Image Source="D:\C# лабы\Sports\Sports\Image/floppy_disk_48.png" />
+            </Button>
+
+            <Button 
+                Name="Delete" 
+                ToolTip="Удалить" 
+                Margin="5,2,5,2" 
+                Click="clDeleteTrainer">
+                <Image Source="D:\C# лабы\Sports\Sports\Image/cancel_48.png" />
+            </Button>
+
+        </ToolBar>
+
+        <TextBlock 
+            Margin="5" 
+            Height="30" 
+            FontSize="20" 
+            FontStyle="Italic" 
+            FontWeight="Bold" Width="630" HorizontalAlignment="Center" VerticalAlignment="Center" >Список тренеров</TextBlock>
+
+        <StackPanel 
+            Orientation="Horizontal" 
+            Height="40" Width="630" >
+
+            <TextBlock 
+                x:Name="TextBlockFamily" 
+                Text="Поиск по фильтру" 
+                Padding="0,5,0,0" 
+                Margin="5,0,350,0" 
+                Height="30" 
+                FontStyle="Italic" 
+                FontSize="14" />
+            <ComboBox x:Name="cbosearch" 
+                      HorizontalAlignment="Left" 
+                      Margin="-300,5,0,5" Width="232">
+                <ComboBoxItem>Фамилия</ComboBoxItem>
+                <ComboBoxItem>Имя</ComboBoxItem>
+                <ComboBoxItem>Специализация</ComboBoxItem>
+            </ComboBox>
+            <TextBox 
+                x:Name="tbsearch" 
+                Margin="-50,5,0,5" 
+                HorizontalAlignment="Left" 
+                Height ="30"  
+                Width="275" 
+                Padding="0,5,0,0" RenderTransformOrigin="1.633,0.467"
+                TextChanged="search_TextChanged"/>
+        </StackPanel>
+
+        <StackPanel  Height="260" Width="799">
+
+            <DataGrid x:Name="dgTrainers"  
+                  ItemsSource="{Binding}" 
+                  AutoGenerateColumns="False" 
+                  MaxWidth="1000" 
+                  MaxHeight="260" 
+                  BorderThickness="3" 
+                  RowHeight="25"
+                  Cursor="Hand" BorderBrush="BurlyWood" 
+                  IsReadOnly="True" 
+                  CanUserAddRows="False" 
+                  CanUserDeleteRows="False" 
+                  HorizontalAlignment="Center" Width="627" VerticalAlignment="Center"
+                 >
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить нового тренера"  Click="clNewTrainer" Width="270"/>
+                        <MenuItem Header="Обновить таблицу" Click="clRefreshTrainer" Width="270"/>
+                        <MenuItem Header="Редактировать записи" Click="clEditTrainer" Width="270"/>
+                        <MenuItem Header="Сохранить изменения" Click="clSaveTrainer" Width="270"/>
+                        <MenuItem Header="Удалить тренера" Click="clDeleteTrainer" Width="270"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header=" Код тренера " 
+            		Binding="{Binding TrainerId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            		IsReadOnly="True"/>
+                    <DataGridTextColumn Header="   Фамилия           "
+            		Binding="{Binding Family, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="   Имя               "
+            		Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="   Отчество          "
+            		Binding="{Binding ThirdName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="   Специализация          "
+            		Binding="{Binding Post, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="   Телефон                  "
+            		Binding="{Binding Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <Grid Height="35" VerticalAlignment="Bottom">
+            <StatusBar Margin="3,10,3,0" Height="25">
+                <TextBlock Width="150">Статус состояния записей:</TextBlock>
+                <TextBlock Width="100" x:Name="tbSt"></TextBlock>
+                <TextBlock Width="118" Margin="200,0,0,0">
+                    Количество записей:
+                </TextBlock>
+                <TextBlock Width="60" x:Name="tbCount"></TextBlock>
+                <TextBlock Width="85">
+                    Текущая дата:
+                </TextBlock>
+                <TextBlock Width="95" x:Name="tbDate"></TextBlock>
+            </StatusBar>
+        </Grid>
+
+
+    </StackPanel>
+    </Page>

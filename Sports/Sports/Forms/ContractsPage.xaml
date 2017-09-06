@@ -1,0 +1,210 @@
+﻿<Page x:Class="Sports.Forms.ContractsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:core="clr-namespace:Sports.Classes"
+      mc:Ignorable="d" 
+	  Title="Контракты" Loaded="Page_LoadedContracts">
+
+    <Page.Resources>
+        <core:ListContractClients x:Key="ListContractClients"/>
+        <core:ListContractTrainers x:Key="ListContractTrainers"/>
+        <core:ListContractServices x:Key="ListContractServices"/>
+    </Page.Resources>
+
+    <StackPanel 
+        Name="Stack2"  
+        Background="Wheat">
+        <Menu Height="30" 
+              Background="Wheat">
+            <MenuItem Header="Документ" Height="30">
+                <MenuItem Header="Добавить новый контракт" Click="clNewContract"  Width="270"/>
+                <MenuItem Header="Обновить таблицу" Click="clRefreshContract"  Width="270"/>
+                <MenuItem Header="Редактировать записи" Click="clEditContract" Width="270"/>
+                <MenuItem Header="Сохранить изменения" Click="clSaveContract" Width="270"/>
+                <MenuItem Header="Удалить контракт" Click="clDeleteContract" Width="270"/>
+                <Separator></Separator>
+                <MenuItem Header="Завершение работы "  Click="clExit" Width="270"/>
+            </MenuItem>
+        </Menu>
+
+
+        <ToolBar 
+            Name="ToolBar1" 
+            Margin="3" 
+            Height="45">
+
+            <Button 
+                Name="Refresh"   
+                Margin="5,2,5,2"   
+                ToolTip="Обновить"
+                Click="clRefreshContract"
+                >
+                <Image Source="D:\C# лабы\Sports\Sports\Image/refresh_48.png" />
+            </Button>
+
+            <Button 
+                Name="Add" 
+                ToolTip="Добавить нового сотрудника" 
+                Margin="5,2,5,2"
+                Click="clNewContract"
+                 >
+                <Image Source="D:\C# лабы\Sports\Sports/Image/add_48.png" />
+            </Button>
+
+            <Button 
+                Name="Edit" 
+                ToolTip="Редактировать" 
+                Margin="5,2,5,2"
+                Click="clEditContract"
+                >
+                <Image Source="D:\C# лабы\Sports\Sports\Image/paper_content_pencil_48.png" />
+            </Button>
+
+            <Button 
+                Name="Save" 
+                ToolTip="Сохранить" 
+                Margin="5,2,5,2"
+                Click="clSaveContract"
+                >
+                <Image Source="D:\C# лабы\Sports\Sports\Image/floppy_disk_48.png" />
+            </Button>
+
+            <Button 
+                Name="Delete" 
+                ToolTip="Удалить" 
+                Margin="5,2,5,2"
+                Click="clDeleteContract"
+                >
+                <Image Source="D:\C# лабы\Sports\Sports\Image/cancel_48.png" />
+            </Button>
+
+        </ToolBar>
+
+        <TextBlock 
+            Margin="5" 
+            Height="30" 
+            FontSize="20" 
+            FontStyle="Italic" 
+            FontWeight="Bold" Width="630" >Список контрактов</TextBlock>
+
+        <StackPanel 
+            Orientation="Horizontal" 
+            Height="40" Width="630" >
+
+            <TextBlock 
+                x:Name="TextBlockFamily" 
+                Text="Поиск по фильтру" 
+                Padding="0,5,0,0" 
+                Margin="5,0,350,0" 
+                Height="30" 
+                FontStyle="Italic" 
+                FontSize="14" />
+            <ComboBox x:Name="cbosearch" 
+                      HorizontalAlignment="Left" 
+                      Margin="-300,5,0,5" Width="232">
+                <ComboBoxItem>Тип оплаты</ComboBoxItem>
+                <ComboBoxItem>Услуга</ComboBoxItem>
+                <ComboBoxItem>Имя Клиента</ComboBoxItem>
+                <ComboBoxItem>Имя Тренера</ComboBoxItem>
+                <ComboBoxItem>Фамилия Клиента</ComboBoxItem>
+                <ComboBoxItem>Фамилия Тренера</ComboBoxItem>
+            </ComboBox>
+            <TextBox 
+                x:Name="tbsearch" 
+                Margin="-50,5,0,5" 
+                HorizontalAlignment="Left" 
+                Height ="30"  
+                Width="275" 
+                Padding="0,5,0,0" RenderTransformOrigin="1.633,0.467"
+                TextChanged="contrctsearch_TextChanged"/>
+        </StackPanel>
+
+        <StackPanel Height="260">
+            <DataGrid x:Name="dgContracts"  
+                  ItemsSource="{Binding}" 
+                  AutoGenerateColumns="False" 
+                  MaxWidth="1000" 
+                  MaxHeight="260" 
+                  BorderThickness="3" 
+                  RowHeight="25"
+                  Cursor="Hand" 
+                  BorderBrush="BurlyWood" 
+                  IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" HorizontalAlignment="Left">
+
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Оформить новый контракт" Click="clNewContract"  Width="270"/>
+                        <MenuItem Header="Обновить таблицу"  Click="clRefreshContract" Width="270"/>
+                        <MenuItem Header="Редактировать записи" Click="clEditContract" Width="270"/>
+                        <MenuItem Header="Сохранить изменения" Click="clSaveContract" Width="270"/>
+                        <MenuItem Header="Удалить контракт" Click="clDeleteContract" Width="270"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header=" Номер контракта " 
+                                    Binding="{Binding ContractId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="   Дата начала  " IsReadOnly="True"
+                                    Binding="{Binding DateStart, StringFormat={}{0:dd.MM.yyyy}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="   Дата окончания  " IsReadOnly="True"
+                                    Binding="{Binding DateEnd, StringFormat={}{0:dd.MM.yyyy}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridComboBoxColumn Header="   Клиент                 "
+                                    ItemsSource="{Binding Source={StaticResource ListContractClients}}"
+                                    DisplayMemberPath="Family"
+                                    SelectedValueBinding="{Binding Path=ClientId, 
+                                    Mode=TwoWay, 
+                                    UpdateSourceTrigger=PropertyChanged}"
+                                    SelectedValuePath="ClientId">
+                    </DataGridComboBoxColumn>
+
+                    <DataGridComboBoxColumn Header=" Тренер                  "
+                                    ItemsSource="{Binding Source={StaticResource ListContractTrainers}}"
+                                    DisplayMemberPath="Family"
+                                    SelectedValueBinding="{Binding Path=TrainerId, 
+                                    Mode=TwoWay, 
+                                    UpdateSourceTrigger=PropertyChanged}"
+                                    SelectedValuePath="TrainerId">
+                    </DataGridComboBoxColumn>
+
+                    <DataGridComboBoxColumn Header=" Услуга                       "
+                                    ItemsSource="{Binding Source={StaticResource ListContractServices}}"
+                                    DisplayMemberPath="Title"
+                                    SelectedValueBinding="{Binding Path=ServiceId, 
+                                    Mode=TwoWay, 
+                                    UpdateSourceTrigger=PropertyChanged}"
+                                    SelectedValuePath="ServiceId">
+                    </DataGridComboBoxColumn>
+                    <DataGridTextColumn Header=" Количество занятий "
+                                    Binding="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header=" Тип "
+                                    Binding="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header=" Оплата "
+                                    Binding="{Binding Payment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    
+
+                    <DataGridTextColumn x:Name="columnOffer" Header=" Сумма контракта                       " IsReadOnly="True"
+                                    Binding="{Binding Sum, StringFormat= {}{0:0.00}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <Grid Height="35" VerticalAlignment="Bottom">
+            <StatusBar Margin="3,10,3,0" Height="25">
+                <TextBlock Width="150">Статус состояния записей:</TextBlock>
+                <TextBlock Width="100" x:Name="tbSt"></TextBlock>
+                <TextBlock Width="118" Margin="200,0,0,0">
+                    Количество записей:
+                </TextBlock>
+                <TextBlock Width="60" x:Name="tbCount"></TextBlock>
+                <TextBlock Width="85">
+                    Текущая дата:
+                </TextBlock>
+                <TextBlock Width="95" x:Name="tbDate"></TextBlock>
+            </StatusBar>
+        </Grid>
+
+    </StackPanel>
+</Page>

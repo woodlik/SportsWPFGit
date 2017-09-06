@@ -1,0 +1,71 @@
+﻿<Window x:Class="Sports.NewObject.wNewTrainers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sports"
+        mc:Ignorable="d"
+        Title="Карточка нового сотрудника" Height="400" Width="500" Icon="D:\C# лабы\Sports\Sports\Image/WeightTrainingBench.png">
+
+
+    <StackPanel Background="Wheat" Margin="0,0,0,-3" >
+
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center">
+            <Label x:Name="FamTra" 
+                   Content="Фамилия" 
+                   Height="28" Margin="0,14,200,15" 
+                   Background="Transparent" 
+                   Width="187" 
+                   FontSize="14"/>
+            <TextBox x:Name="tbFamTra"  Height="30"  Margin="-170,0,0,0"  Width="190" Padding="0,5,0,0" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center">
+            <Label x:Name="NameTra" 
+                   Content="Имя" Height="28" 
+                   Margin="0,14,200,15" 
+                   Background="Transparent"  
+                   Width="187" FontSize="14"/>
+            <TextBox x:Name="tbNameTra"  Height="30"  Margin="-170,0,0,0"  Width="190" Padding="0,5,0,0" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center" Margin="42,0">
+            <Label x:Name="PatTra" 
+                   Content="Отчество" 
+                   Height="28" 
+                   Margin="0,14,200,15" 
+                   Background="Transparent"  
+                   Width="187" FontSize="14"/>
+            <TextBox x:Name="tbPatTra"  Height="30"  Margin="-170,0,0,0"  Width="190" Padding="0,5,0,0" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center">
+            <Label x:Name="TitTra" 
+                   Content="Специализация" 
+                   Height="28" 
+                   Margin="0,14,200,15" 
+                   Background="Transparent"  
+                   Width="187" FontSize="14"/>
+            <TextBox x:Name="tbTitTra"  Height="30"  Margin="-170,0,0,0"  Width="190" Padding="0,5,0,0" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center">
+            <Label x:Name="TelTra" 
+                   Content="Телефон" 
+                   Height="28" 
+                   Margin="0,14,200,15" 
+                   Background="Transparent"  
+                   Width="187" FontSize="14"/>
+            <TextBox x:Name="tbTelTra"  Height="30"  Margin="-170,0,0,0"  Width="190" Padding="0,5,0,0" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center" Margin="42,0,28,0" Width="422">
+
+            <Button x:Name="add_btn" Content="Добавить" Width="100" Height="30" Margin="156,0,0,0" Background="#FFA1E68D" FontStyle="Italic" Click="AddNewTrainer"/>
+
+            <Button x:Name="cancel_btn" Content="Очистить" Width="100" Height="30" Margin="50,0,0,0" Background="#FFF38686" FontStyle="Italic" Click="ClearNewTrainer"/>
+
+        </StackPanel>
+
+    </StackPanel>
+</Window>

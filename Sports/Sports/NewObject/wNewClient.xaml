@@ -1,0 +1,70 @@
+﻿<Window x:Class="Sports.NewObject.wNewClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sports"
+        mc:Ignorable="d"
+        Title="Карточка нового клиента" Height="500" Width="500" Icon="D:\C# лабы\Sports\Sports\Image/WeightTrainingBench.png">
+
+    <StackPanel Background="Wheat" Margin="0,0,0,-3" >
+
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center">
+            <Label x:Name="FamСl" 
+                   Content="Фамилия" 
+                   Height="28" Margin="0,14,200,15" 
+                   Background="Transparent" 
+                   Width="187" 
+                   FontSize="14"/>
+            <TextBox x:Name="tbFamCl"  Height="30"  Margin="-170,0,0,0"  Width="190" Padding="0,5,0,0" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center">
+            <Label x:Name="NameCl" 
+                   Content="Имя" Height="28" 
+                   Margin="0,14,200,15" 
+                   Background="Transparent"  
+                   Width="187" FontSize="14"/>
+            <TextBox x:Name="tbNameCl"  Height="30"  Margin="-170,0,0,0"  Width="190" Padding="0,5,0,0" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center" Margin="42,0">
+            <Label x:Name="PatCl" 
+                   Content="Отчество" 
+                   Height="28" 
+                   Margin="0,14,200,15" 
+                   Background="Transparent"  
+                   Width="187" FontSize="14"/>
+            <TextBox x:Name="tbPatCl"  Height="30"  Margin="-170,0,0,0"  Width="190" Padding="0,5,0,0" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center" Margin="42,0">
+            <Label x:Name="AdressCl" 
+                   Content="Адрес клиента" 
+                   Height="28" 
+                   Margin="0,14,200,15" 
+                   Background="Transparent"  
+                   Width="187" FontSize="14"/>
+            <TextBox x:Name="tbAdCl"  Height="30"  Margin="-170,0,0,0"  Width="190" Padding="0,5,0,0" ScrollViewer.CanContentScroll="True" AcceptsReturn="True" FontSize="14"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center" Margin="42,0">
+            <Label x:Name="TelephoneCl" 
+                   Content="Телефон" 
+                   Height="28" 
+                   Margin="0,14,200,15" 
+                   Background="Transparent"  
+                   Width="187" FontSize="14"/>
+            <TextBox x:Name="tbTelephoneCl"  Height="30"  Margin="-170,0,0,0"  Width="190" Padding="0,5,0,0" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" AcceptsReturn="True" FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center"/>
+
+        <StackPanel Orientation="Horizontal" Height="57" HorizontalAlignment="Center" Margin="42,0,28,0" Width="422">
+
+            <Button x:Name="add_btn" Content="Добавить" Width="100" Height="30" Margin="156,0,0,0" Background="#FFA1E68D" FontStyle="Italic" Click="AddNewClient" />
+
+            <Button x:Name="cancel_btn" Content="Очистить" Width="100" Height="30" Margin="50,0,0,0" Background="#FFF38686" FontStyle="Italic" Click="ClearNewCl" />
+
+        </StackPanel>
+
+    </StackPanel>
+</Window>
